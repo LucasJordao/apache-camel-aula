@@ -14,7 +14,6 @@ public class EmailService implements EmailServicePort {
 
     @Override
     public void sendEmail(EmailMessage message) {
-        Object response = producerTemplate.requestBody("direct:email-send", message);
-
+        producerTemplate.requestBody("direct:email-send", message);
     }
 }
