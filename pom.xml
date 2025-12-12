@@ -19,6 +19,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<camel.version>3.20.4</camel.version>
+		<org.jdbi>3.27.0</org.jdbi>
 	</properties>
 
 	<dependencyManagement>
@@ -28,6 +29,13 @@
 				<artifactId>camel-spring-boot-bom</artifactId>
 				<version>${camel.version}</version>
 				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jdbi</groupId>
+				<artifactId>jdbi3-bom</artifactId>
+				<type>pom</type>
+				<version>${org.jdbi}</version>
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
@@ -64,6 +72,30 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<!--JDBI-->
+		<dependency>
+			<groupId>org.jdbi</groupId>
+			<artifactId>jdbi3-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jdbi</groupId>
+			<artifactId>jdbi3-postgres</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jdbi</groupId>
+			<artifactId>jdbi3-sqlobject</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- Tests -->

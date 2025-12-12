@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class EmailRouter extends RouteBuilder {
 
+    public static final String ROUTE_URI = "direct:email-send";
+
     private final EmailValidationProcessor validator;
 
     @Override
@@ -25,7 +27,7 @@ public class EmailRouter extends RouteBuilder {
                 .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(500))
                 .setBody(constant("Erro interno ao enviar e-mail."));
 
-        from("direct:email-send")
+        from(ROUTE_URI)
                 .routeId("send-email-route")
                 .log("Recebendo requisição para envio de e-mail")
                 .process(validator)

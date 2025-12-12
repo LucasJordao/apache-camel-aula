@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.apache.camel.ProducerTemplate;
 import org.springframework.stereotype.Service;
 
+import static com.apachecamel.aula.exercicio.core.router.EmailRouter.ROUTE_URI;
+
 @Service
 @RequiredArgsConstructor
 public class EmailService implements EmailServicePort {
@@ -14,6 +16,6 @@ public class EmailService implements EmailServicePort {
 
     @Override
     public void sendEmail(EmailMessage message) {
-        producerTemplate.requestBody("direct:email-send", message);
+        producerTemplate.requestBody(ROUTE_URI, message);
     }
 }
